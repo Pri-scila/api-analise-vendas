@@ -1,27 +1,34 @@
 # API de Análise de Vendas
 
-Projeto backend desenvolvido em Python utilizando FastAPI, com foco em leitura e análise de dados de vendas a partir de arquivos CSV.
+Esta API permite analisar dados de vendas de forma rápida e interativa.
 
-## Objetivo
+## Funcionalidades
+- Endpoints para consultar vendas
+- Relatórios básicos
+- Documentação interativa via Swagger (/docs)
 
-Desenvolver uma API inicial capaz de processar dados de vendas e gerar relatórios simples, conforme a Sprint 1 do cronograma do projeto Hanami Backend.
+## Como rodar localmente
 
-## Status do Projeto
+1. Clone o repositório:
+   git clone https://github.com/Pri-scila/api-analise-vendas.git
+   cd api-analise-vendas
 
-🚧 Em desenvolvimento — Sprint 1 concluída
+2. Instale as dependências:
+   pip install fastapi uvicorn pandas
 
-Nesta etapa foram implementados:
-- Estrutura inicial do projeto
-- Configuração do FastAPI
-- Leitura de dados a partir de arquivo CSV
-- Endpoints iniciais de listagem e totalização de vendas
-- Documentação automática com Swagger (OpenAPI)
+3. Rode a API:
+   uvicorn main:app --reload
 
-## Tecnologias Utilizadas
+4. Acesse a documentação interativa no navegador:
+   http://127.0.0.1:8000/docs
 
-- Python
-- FastAPI
-- Uvicorn
+## Estrutura do projeto
+- app/ → Código da API (routes, services, __init__.py)  
+- data/ → Arquivos de dados (vendas.csv)  
+- main.py → Arquivo principal que roda a API  
+- README.md → Este arquivo  
+- .gitignore → Arquivos que não vão para o GitHub  
 
-## Estrutura do Projeto
-
+## Observações
+- Arquivos de cache do Python (__pycache__) são ignorados pelo .gitignore.
+- Atualize este README conforme novas funcionalidades forem adicionadas.
