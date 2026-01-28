@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException
 import pandas as pd
 import logging
+from services.calculations import calcular_vendas, calcular_financeiro
 
 # -------------------------
 # Configuração do Logging
@@ -88,4 +89,26 @@ async def upload_file(file: UploadFile):
 @app.get("/")
 async def root():
     return {"message": "API de Análise de Vendas ativa!"}
+# -------------------------
+# Relatório de Vendas
+# -------------------------
+@app.get("/reports/sales-summary")
+async def sales_summary():
+    if not hasattr(app.state, "data"):
+        raise HTTPException(status_code=400, detail="Nenhum arquivo foi carregado")
+
+    resultado = calcular_vendas(app.state.data)
+    return resultado
+
+
+# -------------------------
+# Métricas Financeiras
+# -------------------------
+@app.get("/reports/financial-metrics")
+async def financial_metrics():
+    if not hasattr(app.state, "data"):
+        raise HTTPException(status_code=400, detail="Nenhum arquivo foi carregado")
+
+    resultado = calcular_financeiro(app.state.data)
+    return resultado
 
